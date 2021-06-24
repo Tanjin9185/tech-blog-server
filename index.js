@@ -50,6 +50,14 @@ client.connect((err) => {
     });
 
 
+    //load blog 
+    app.get("/blogs", (req, res) => {
+        blogCollection.find().toArray((err, blog) => {
+            res.send(blog)
+        });
+    });
+
+
 });
 
 
