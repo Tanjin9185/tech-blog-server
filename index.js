@@ -58,6 +58,24 @@ client.connect((err) => {
     });
 
 
+    // Delete Blog
+
+    app.delete('/blogs/:id', (req, res) => {
+        const id = ObjectID(req.params.id);
+
+        blogCollection.findOneAndDelete({ _id: id })
+            .then(result => {
+                res.json({ success: !!result.value })
+            })
+            .then(error => {
+                console.log(error);
+            })
+    });
+
+
+
+
+
 });
 
 
